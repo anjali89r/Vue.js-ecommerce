@@ -1,3 +1,3 @@
-# e-commerceA -Vue.js project
-
+# e-commerce
+Vue.js project
 ecommerce project developed in Vue.js
