@@ -1,3 +1,3 @@
 # e-commerce
-Vue.js project
+Vue.js
 ecommerce project
