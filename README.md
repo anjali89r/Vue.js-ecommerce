@@ -1,5 +1,3 @@
-# e-commerce
+# e-commerceA -Vue.js project
 
-> A Vue.js project
-
-NavHeader.vue and Header.vue combined together in roughStocks.vue
+ecommerce project developed in Vue.js
