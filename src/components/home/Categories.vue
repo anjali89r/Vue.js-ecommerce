@@ -108,6 +108,7 @@
   right: 0;
   left: 0;
   font-size: 12px;
+  transition: background-color 0.5s ease;
   background-color: #000;
 }
 .text-box:hover {

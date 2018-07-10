@@ -1,24 +1,27 @@
 <template>
    <nav class="nav-bar">
-     <span id="navbar-toggle">
+     <span id="navbar-toggle" @click="toggleMenu">
             <i class="fa fa-bars" aria-hidden="true"></i>
         </span>
         <a href="#" id="logo">logo</a>
-        <ul id="sub-nav">
-          <li>
-                <a href="#" class="nav-links">Women</a>
+        <ul id="sub-nav" >
+          <li class="header-women" @mouseover="showSubMenu" @mouseleave="hideSubMenu">
+                <a href="#" class="nav-links women">Women <i class="icon-cross"></i></a>
+                <div class="sub-menuWrap" v-show="active">
+                    <h1>visible!</h1>
+                </div>
             </li>
-            <li>
+            <li class="header-men">
                 <a href="#" class="nav-links">Men</a>
             </li>
-            <li>
+            <li class="header-about">
                 <a href="#" class="nav-links">About Us</a>
             </li>
-            <li>
+            <li class="header-support">
                 <a href="#" class="nav-links">Support</a>
             </li>
         </ul>
-        <ul id="main-nav">
+        <ul id="main-nav" >
             <router-link to="/" activeClass="active" tag="li"><a class="nav-links">Home</a></router-link>
 
             <li>
@@ -35,10 +38,37 @@
 <script>
 import {mapGetters} from 'vuex';
 export default {
+  data() {
+       return {
+         menuActive: false,
+          active: false
+       }
+   },
   computed: {
       ...mapGetters({
           itemsInCart: 'cartItems'
    })
+   },
+   methods: {
+     toggleMenu() {
+       let mainNav = document.getElementById('main-nav');
+      let subNav = document.getElementById('sub-nav');
+       this.menuActive = !this.menuActive;
+       if(this.menuActive) {
+         mainNav.style.display = 'flex';
+        subNav.style.display = 'flex'
+       }
+       else {
+         mainNav.style.display = 'none';
+        subNav.style.display = 'none'
+       }
+     },
+     showSubMenu() {
+       this.active =  true;
+     },
+     hideSubMenu() {
+       this.active =  false;
+     }
    }
 }
 </script>
@@ -148,5 +178,29 @@ export default {
     display: none;
   }
 
+}
+
+.icon-cross:before {
+   content: "\e117";
+ }
+
+ #sub-nav i {
+    display: none;
+ }
+
+ [class^="icon-"], [class*=" icon-"] {
+    font-family: 'icomoon' !important;
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    text-transform: none;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+ }
+ /* .header-women .sub-menuWrap {
+   display: none;
+} */
+.sub-menuWrap {
+  background-color: green;
 }
 </style>
